@@ -1,5 +1,5 @@
 import React from "react";
-
+import swal from "sweetalert";
 class NoteInput extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +22,8 @@ class NoteInput extends React.Component {
 
   onResetHandler(event) {
     event.preventDefault();
+    const maxChar = document.getElementById('maxCharacter');
+    maxChar.style.color = '#303030';
     document.getElementById('description').value = 'Description';
     this.setState(() => {
       return {
@@ -39,7 +41,11 @@ class NoteInput extends React.Component {
       maxChar.style.color = 'red';
     }
     if (event.target.value.length > limit) {
-      window.alert("Title can't greater than 50 characters!")
+      swal({
+        icon: 'warning',
+        title: 'Warning',
+        'text': 'Title can\'t greater than 50 characters!',
+      })
       const title = document.getElementById('title');
       title.value.length.slice(0, 50);
       const titleValue = event.target.value.length.slice(0, limit);
@@ -77,12 +83,12 @@ class NoteInput extends React.Component {
           <div className="form_body">
             <label htmlFor="title" className="text-dark">Title</label>
 
-            <input type="text" placeholder="Title" onChange={this.onChangeTitleHandler} className="form-control mb-sm" id="title" value={this.state.title} />
+            <input type="text" placeholder="Title" onChange={this.onChangeTitleHandler} className="form-control mb-sm" id="title" value={this.state.title} required />
             <p id="maxCharacter">{50 - this.state.title.length} Remaining characters</p><br />
 
             <label htmlFor="description" className="text-dark" placeholder="">Description</label>
 
-            <textarea onChange={this.onChangeBodyHandler} className="form-control mb-sm" id="description" defaultValue="Description"></textarea>
+            <textarea onChange={this.onChangeBodyHandler} className="form-control mb-sm" id="description" defaultValue="Description" required ></textarea>
           </div>
           <div className="form_footer">
             <button type="submit" className="btn btn-primary mr-sm">Save</button>

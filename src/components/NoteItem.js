@@ -10,34 +10,34 @@ function NoteItem ({ id, title, body, createdAt, archived, onDelete, onToggle })
     let dayString = newDate.getDay();
     switch (month) {
       case 0:
-        month = 'Januari';
+        month = 'January';
         break;
       case 1:
-        month = 'Februari';
+        month = 'February';
         break;
       case 2:
-        month = 'Maret';
+        month = 'March';
         break;
       case 3:
         month = 'April';
         break;
       case 4:
-        month = 'Mei';
+        month = 'May';
         break;
       case 5:
-        month = 'Juni';
+        month = 'June';
         break;
       case 6:
-        month = 'Juli';
+        month = 'July';
         break;
       case 7:
-        month = 'Agustus';
+        month = 'August';
         break;
       case 8:
         month = 'September';
         break;
       case 9:
-        month = 'Oktober';
+        month = 'October';
         break;
       case 10:
         month = 'November';
@@ -51,25 +51,25 @@ function NoteItem ({ id, title, body, createdAt, archived, onDelete, onToggle })
 
     switch (dayString) {
       case 0:
-        dayString = 'Minggu';
+        dayString = 'Sunday';
         break;
       case 1:
-        dayString = 'Senin';
+        dayString = 'Monday';
         break;
       case 2:
-        dayString = 'Selasa';
+        dayString = 'Tuesday';
         break;
       case 3:
-        dayString = 'Rabu';
+        dayString = 'Wednesday';
         break;
       case 4:
-        dayString = 'Kamis';
+        dayString = 'Thursday';
         break;
       case 5:
-        dayString = 'Jumat';
+        dayString = 'Friday';
         break;
       case 6:
-        dayString = 'Sabtu';
+        dayString = 'Saturday';
         break;
       default:
         break;
