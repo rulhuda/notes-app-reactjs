@@ -11,7 +11,7 @@ function NoteList ({ headerText, notes, onDelete, onToggle }) {
       </div>
     );
   }
-  console.log('notes', notes);
+
   return (
     <div className="container">
       <div className="container-header">
