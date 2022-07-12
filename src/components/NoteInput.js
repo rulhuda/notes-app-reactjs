@@ -37,7 +37,7 @@ class NoteInput extends React.Component {
     const limit = 50;
     const maxChar = document.getElementById('maxCharacter');
     maxChar.style.color = '#303030';
-    if (event.target.value.length > 40) {
+    if (event.target.value.length > (limit - 16)) {
       maxChar.style.color = 'red';
     }
     if (event.target.value.length > limit) {
@@ -47,12 +47,11 @@ class NoteInput extends React.Component {
         'text': 'Title can\'t greater than 50 characters!',
       })
       const title = document.getElementById('title');
-      title.value.length.slice(0, 50);
-      const titleValue = event.target.value.length.slice(0, limit);
+      title.value.length.slice(0, limit);
       this.setState((prevState) => {
         return {
           ...prevState,
-          title: titleValue,
+          title,
         }
       });
     }
