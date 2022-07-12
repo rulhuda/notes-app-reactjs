@@ -8,7 +8,7 @@ class SearchBox extends React.Component {
   }
 
   onChangeSearchBox(event) {
-    this.props.onSearchHandler(event.target.value)
+    this.props.onSearchHandler(event.target.value.trim())
   }
 
   render() {

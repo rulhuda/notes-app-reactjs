@@ -5,6 +5,7 @@ import getInitialData from "../utils/data";
 import NoteInput from "./NoteInput";
 import NoteList from "./NoteList";
 import SearchBox from "./SearchBox";
+import NoData from '../images/no-data.png';
 
 class NotesApp extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class NotesApp extends React.Component {
 
     this.state = {
       notes: getInitialData(),
-      filteredData: [],
+      filteredData: getInitialData(),
     }
 
     this.onAddNotesHandler = this.onAddNotesHandler.bind(this);
@@ -111,7 +112,7 @@ class NotesApp extends React.Component {
   }
 
   onSearchNotes(keyword) {
-    if (keyword.trim() === '') {
+    if (keyword === '') {
       this.setState((prevState) => {
         return {
           ...prevState.notes,
@@ -211,6 +212,15 @@ class NotesApp extends React.Component {
 
       return data;
     };
+
+    const noData = () => {
+      return (
+        <div style={{margin: 'auto'}}>
+          <h2 style={{textAlign: 'center', color: '#bb0b66'}}>No Data</h2>
+          <img style={{width: '100%'}} src={NoData} alt="no-data" />
+        </div>
+      );
+    }
     
     return (
       <div>
@@ -226,9 +236,9 @@ class NotesApp extends React.Component {
             </div>
           </div>
           <div className="d-grid">
-            <NoteList headerText='Your Notes' notes={this.state.filteredData.length > 0 ? unarchiveNote(this.state.filteredData) : unarchiveNote(this.state.notes)} onDelete={this.onDeleteHandler} onToggle={this.onToggleStatus} />
+            <NoteList headerText='Your Notes' notes={this.state.filteredData.length > 0 ? unarchiveNote(this.state.filteredData) : noData()} onDelete={this.onDeleteHandler} onToggle={this.onToggleStatus} />
             
-            <NoteList headerText='Your Archived' notes={this.state.filteredData.length > 0 ? archivedNote(this.state.filteredData) : archivedNote(this.state.notes)} onDelete={this.onDeleteHandler} onToggle={this.onToggleStatus} />
+            <NoteList headerText='Your Archived' notes={this.state.filteredData.length > 0 ? archivedNote(this.state.filteredData) : noData()} onDelete={this.onDeleteHandler} onToggle={this.onToggleStatus} />
           </div>
         </div>
 
